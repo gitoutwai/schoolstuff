@@ -1,14 +1,8 @@
-text = input("text: ").lower()
+text = input("text: ")
+filtered = ""
 
-final = ""
-
-for char in text:
-    if ord(char) > 96 and ord(char) < 124:
-        final += char
-
-rText = final[::-1]
-
-if rText == final:
-    print("Pally!")
-else:
-    print("No")
+for i in text.lower():
+    if ord(text):
+        pass
+rText = text[::-1]
+print(rText)
