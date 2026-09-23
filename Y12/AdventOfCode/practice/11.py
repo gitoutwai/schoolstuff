@@ -1,0 +1,1 @@
+print(f"£{round((float(input())+float(input())+float(input())+float(input())+float(input()))/int(input()),2):.2f}")
