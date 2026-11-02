@@ -25,9 +25,14 @@ class Queue:
                 return True
             else:
                 return False
-
-    def QueueDeQueue(self):
+    def isEmpty(self):
         if self.queue[self.lowerPointer + 1] == None:
+            return True
+        else:
+            return False
+        
+    def QueueDeQueue(self):
+        if self.isEmpty():
             print(f"ERROR: QUEUE {self.name}({self.queue}) IS EMPTY!")
         else:
             self.queue[self.lowerPointer + 1] = None
