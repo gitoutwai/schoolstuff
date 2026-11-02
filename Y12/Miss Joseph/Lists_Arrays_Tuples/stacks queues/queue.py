@@ -20,11 +20,54 @@ class Queue:
             self.length = len(queue)
             self.queue = queue
 
-        def QueueDeQueue():
-            pass
+    def isFull(self):
+            if self.lowerPointer + 1 == self.upperPointer and self.queue[self.lowerPointer + 1] != None:
+                return True
+            else:
+                return False
 
-        def QueueEnQueue():
-            pass
-        
-myQueue = Queue("myQueue", 6)
-print(myQueue.queue)
+    def QueueDeQueue(self):
+        if self.queue[self.lowerPointer + 1] == None:
+            print(f"ERROR: QUEUE {self.name}({self.queue}) IS EMPTY!")
+        else:
+            self.queue[self.lowerPointer + 1] = None
+            self.lowerPointer += 1
+            if self.lowerPointer == self.length - 1:
+                self.lowerPointer = -1
+
+    def QueueEnQueue(self,value):
+        if not self.isFull():
+            self.queue[self.upperPointer] = value
+            self.upperPointer += 1
+        else:
+            print(f"ERROR: QUEUE {self.name}({self.queue}) IS FULL!")
+        if self.upperPointer == self.length:
+            self.upperPointer = 0
+
+def test():
+    myQueue = Queue("myQueue", 6)
+    myQueue.QueueDeQueue()
+    print(myQueue.lowerPointer)
+    print(myQueue.upperPointer)
+    myQueue.QueueEnQueue("Hi")
+    print(myQueue.queue)
+    print(myQueue.lowerPointer)
+    print(myQueue.upperPointer)
+    myQueue.QueueDeQueue()
+    print(myQueue.queue)
+    print(myQueue.lowerPointer)
+    print(myQueue.upperPointer)
+
+    for _ in range(5):
+        myQueue.QueueEnQueue("Hi")
+        print(myQueue.queue)
+        print(myQueue.lowerPointer)
+        print(myQueue.upperPointer)
+
+    for _ in range(8):
+        myQueue.QueueDeQueue()
+        print(myQueue.queue)
+        print(myQueue.lowerPointer)
+        print(myQueue.upperPointer)
+
+test()
